@@ -1,28 +1,26 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-
-int f[20];
-bool fibo[1005];
-
-int main() {
-	f[0] = 0;
-	f[1] = f[2] = 1;
-	fibo[0] = fibo[1] = fibo[2] = 1;
-	for(int i=3; i<=20; i++) {
-		f[i] = f[i-1] + f[i-2];
-		fibo[f[i]] = 2;
+int main(){
+	int t;cin>>t;
+	int fibo[1005]={0};
+	fibo[0]=1;
+	fibo[1]=1;
+	int l=0,r=1;
+	while(l+r<=1000){
+		int tmp=l+r;
+		fibo[tmp]=1;
+		l=r;
+		r=tmp;
 	}
-	int t;
-	cin >> t;
-	while(t--) {
-		int n; cin >> n;
-		int a[n+5];
-		for(int i=0; i<n; i++) {
-			cin >> a[i];
-			if(fibo[a[i]])
-				cout << a[i] << " ";
+	while(t--){
+		int n;cin>>n;
+		int a[n];
+		for(int i=0;i<n;i++){
+			cin>>a[i];
+			if(fibo[a[i]]==1){
+				cout<<a[i]<<" ";
+			}
 		}
-		cout << endl;	
+		cout<<endl;
 	}
 }
-
